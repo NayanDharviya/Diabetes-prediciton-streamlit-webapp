@@ -21,9 +21,10 @@ df = pd.read_csv("diabetes.csv")
 
 # HEADINGS
 st.title('Diabetes Checkup')
-st.sidebar.header('Patient Data')
 st.subheader('Training Data Stats')
 st.write(df.describe())
+st.sidebar.header('Patient Data')
+
 
 
 # X AND Y DATA
@@ -53,7 +54,9 @@ def user_report():
       'dpf':dpf,
       'age':age
   }
+
   report_data = pd.DataFrame(user_report_data, index=[0])
+  print("report data===============",report_data)
   return report_data
 
 
@@ -169,10 +172,14 @@ st.pyplot(fig_dpf)
 # OUTPUT
 st.subheader('Your Report: ')
 output=''
+
 if user_result[0]==0:
-  output = 'You are not Diabetic'
+  output = 'Congrats!! You are not Diabetic'
+  color = 'green'
 else:
   output = 'You are Diabetic'
-st.title(output)
+  color = 'red'
+  
+st.title(output, color=color)
 st.subheader('Accuracy: ')
 st.write(str(accuracy_score(y_test, rf.predict(x_test))*100)+'%')
