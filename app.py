@@ -175,11 +175,22 @@ output=''
 
 if user_result[0]==0:
   output = 'Congrats!! You are not Diabetic'
-  color = 'green'
+  # color = 'green'
 else:
   output = 'You are Diabetic'
-  color = 'red'
-  
-st.title(output, color=color)
+  # color = 'red'
+
+st.title(output)
 st.subheader('Accuracy: ')
 st.write(str(accuracy_score(y_test, rf.predict(x_test))*100)+'%')
+
+
+# import subprocess
+# # import app
+
+# def cmd_command():
+#     cmd = "streamlit run app.py"
+#     x = subprocess.check_output(cmd, shell=True)
+#     print("done")
+
+# cmd_command()
